@@ -58,19 +58,22 @@ def Signin(request):
 
 
 def User(request):
-
-    userid=request.session['id']  
-    user_de=reg.objects.get(id=userid)
     
-    if request.method == "POST":
+    try:
+        userid=request.session['id']  
+        user_de=reg.objects.get(id=userid)
+    
+        if request.method == "POST":
+      
+            firstname = request.POST['firstname']
+            lastname = request.POST['lastname']
+            email = request.POST['email']
+            password = request.POST['password']
+            mobile= request.POST['mobile']
         
-        firstname = request.POST['firstname']
-        lastname = request.POST['lastname']
-        email = request.POST['email']
-        password = request.POST['password']
-        mobile= request.POST['mobile']
-        
-        user=reg.objects.filter(id=userid).update(firstname=firstname,lastname = lastname ,email=email, password= password,mobilenumber=mobile)
+            user=reg.objects.filter(id=userid).update(firstname=firstname,lastname = lastname ,email=email, password= password,mobilenumber=mobile)
+
+    except Exception as e:print(e)    
         
     return render(request,'user.html',{"user":user_de})
 
