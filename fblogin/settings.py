@@ -77,18 +77,29 @@ WSGI_APPLICATION = 'fblogin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.postgresql_psycopg2',
+#         'NAME':'fbfi',
+#         'USER':'postgres',
+#         'PASSWORD':'root',
+#         'HOST':'localhost',
+#         'PORT':'5432'
+#     }
+# }
+
+
+
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'fbfi',
-        'USER':'postgres',
-        'PASSWORD':'root',
-        'HOST':'localhost',
+        'NAME':'d7u4lqg7l5146q',
+        'USER':'enqqsbevxixixx',
+        'PASSWORD':'b883e38e10006c0f8c73dd850ff269f1d9086e96ad15760ab0ffcccee2ef71f0',
+        'HOST':'ec2-3-216-113-109.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
