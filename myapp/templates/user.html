@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+
+    <div class="col">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">Name</div>
+                    <div class="col-md-9">
+                        {{user.firstname}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">last name</div>
+                    <div class="col-md-9">
+                        {{user.lastname}}
+
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">email</div>
+                    <div class="col-md-9">
+                        {{user.email}}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">password</div>
+                    <div class="col-md-9">
+                        {{user.password}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">mobile</div>
+                    <div class="col-md-9">
+                        {{user.mobilenumber}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">mobile</div>
+                    <div class="col-md-9">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="bi bi-pencil-square"></i>
+                          </button>
+                        <a class="btn btn-danger" href="/deleteuser/{{ user.id }}" role="button" onclick="return confirm(' Are you sure you want to delete this account?')"><i class="bi bi-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"></h5>
+
+                        <a class="btn btn-primary" href="" role="button">close</a>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+
+                            <div class="col-sm-12">
+                                <label for="jobtitle" class="form-label">first name</label>
+                                <input name="jobtitle" type="text" class="form-control" id="firstname" value="{{user.firstname}}" placeholder="" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="com_name" class="form-label">last name</label>
+                                <input name="com_name" type="text" class="form-control" id="lastname" value="{{user.lastname}}" placeholder=" " required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="jobtitle" class="form-label">email</label>
+                                <input name="jobtitle" type="text" class="form-control" id="email" value="{{user.email}}" placeholder="" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="com_name" class="form-label">password</label>
+                                <input name="com_name" type="text" class="form-control" id="password" value="{{user.password}}" placeholder=" " required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="com_name" class="form-label">mobile number</label>
+                                <input name="com_name" type="text" class="form-control" id="mobile" value="{{user.mobilenumber}}" placeholder=" " required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="empostajax()">update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {% endblock %} 
+        
+        {% block script %}
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRFToken": '{{csrf_token}}'
+                }
+            });
+
+            function empostajax() {
+                $.ajax({
+                    url: '/user/',
+                    type: 'POST',
+                    data: {
+                        firstname: $('#firstname').val(),
+                        lastname: $('#lastname').val(),
+                        email: $('#email').val(),
+                        password: $('#password').val(),
+                        mobile: $('#mobile').val(),
+                    },
+                })
+            }
+        </script>
+
+
+        {% endblock script %}
