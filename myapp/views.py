@@ -89,6 +89,13 @@ def DeleteUser(request,userid):
 
 
 
+def logout(request):
+    try:
+        del request.session['id']
+
+    except KeyError:
+        pass
+    return  redirect('/signin/')
 
 
 

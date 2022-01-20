@@ -11,6 +11,7 @@ urlpatterns = [
    path('user/',views.User,name='user'),
 
    path('deleteuser/<int:userid>/',views.DeleteUser,name='deleteuser'),
+   path('logout',views.logout,name='logout'),
    
 ]
 
