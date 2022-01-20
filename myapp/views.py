@@ -47,12 +47,13 @@ def Signin(request):
            password = request.POST['password']     
            obj_sign=reg.objects.get(email=email)
            
-           if obj_sign.password == password:
-               
+           if obj_sign.password == password:              
                request.session['id'] = obj_sign.id
-                       
                return redirect('/user/')
-        
+           
+           else:
+               messages.warning(request, 'user name or password incorrect')  
+   
     except Exception as e:print(e)    
     return render(request,'signin.html')
 
@@ -78,7 +79,6 @@ def User(request):
     return render(request,'user.html',{"user":user_de})
 
 
-
 def DeleteUser(request,userid):
 
     user=request.session['id']
@@ -86,7 +86,6 @@ def DeleteUser(request,userid):
     User.delete()  
 
     return redirect('/signin/')
-
 
 
 def logout(request):
