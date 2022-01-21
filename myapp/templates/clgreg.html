@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load bootstrap5 %} {% bootstrap_messages %} {% block content %}
+{% extends 'base.html' %} {% load bootstrap5 %} {% bootstrap_messages %} {% block content %} 
 
 
 {% if messages %} {% for message in messages %}
@@ -11,11 +11,10 @@
 <div class="row d-flex justify-content-center mt-5">
     <div class="col-md-4 ">
 
-        <a class="btn btn-primary mb-4 pr-3" href="{% url 'signin' %}" role="button">SIGNIN</a>
-        <a class="btn btn-primary mb-4" href="{% url 'clg' %}" role="button">COLLEGE REGISTRATION</a>
-        <a class="btn btn-outline-danger mb-4" href="{% url 'admin' %}" role="button">ADMIN</a>
+        <a class="btn btn-primary mb-4" href="{% url 'signin' %}" role="button">signin</a>
+        <a class="btn btn-primary mb-4" href="{% url 'reg' %}" role="button">STUDENT REGISTRATION</a>
         <div class=" d-flex justify-content-between">
-            <h4 class="mb-5 text-primary">STUDENT REGISTRATION</h4>
+            <h4 class="mb-5 text-primary">COLLEGE REGISTRATION</h4>
 
         </div>
 

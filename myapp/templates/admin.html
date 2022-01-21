@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mt-5 display-7 fw-bold mt-5 pt-5 mb-5">STUDENT</h2>
+            <div class="mt-5 pt-5">
+                <table id="myTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>last name</th>
+                            <th>email</th>
+                            <th>password</th>
+                            <th>mobile number</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for i in seeker %}
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{ i.firstname }}</td>
+                            <td>{{ i.lastname }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.password }}</td>
+                            <td>{{ i.mobilenumber }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/deleteuserad/{{ i.id }}" role="button" onclick="return confirm(' Are you sure you want to delete this account?')"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %} {% block script %}
+
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
+{% endblock script %}

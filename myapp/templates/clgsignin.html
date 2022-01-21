@@ -7,17 +7,15 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %} {% endif %}
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card border-0  rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
-                    <h5 class="card-title text-center mb-5 fw-light fs-5">student Sign In</h5>
+                    <h5 class="card-title text-center mb-5 fw-light fs-5">college Sign In</h5>
                     <a class="btn btn-primary mb-4" href="{% url 'reg' %}" role="button">REGISTER</a>
-                    <a class="btn btn-primary mb-4" href="{% url 'ClgSign' %}" role="button">COLLEGE SIGN IN</a>
-
-                    <form method='POST' action='/signin/'>{% csrf_token %}
+                    <a class="btn btn-primary mb-4" href="{% url 'signin' %}" role="button">STUDENT SIGN IN</a>
+                    <form method='POST' action='/collegesign/'>{% csrf_token %}
                         <div class="form-floating mb-5">
                             <input type="email" class="form-control" id="floatingInput" placeholder="" name="email">
                             <label for="floatingInput">Email address</label>

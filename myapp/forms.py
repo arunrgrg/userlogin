@@ -48,4 +48,37 @@ class regform(forms.ModelForm):
             self._errors['spassword'] = self.error_class([
                 'Minimum 8 characters required'])
 
-    
+class collegereg(forms.ModelForm):
+   
+    class Meta:      
+        model=college_reg
+        fields='__all__'
+
+    collegename = forms.CharField(label="collegename")
+    location = forms.CharField(label="location")
+    email = forms.EmailField(label="email")
+    password = forms.CharField(label="password")
+    mobilenumber = forms.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,10}$', message="enter valid Phone number")])
+
+    def clean(self):    
+        cleaned_data = super().clean()
+        cc_myself = cleaned_data.get("collegename")
+        email=cleaned_data.get("email")
+        password=cleaned_data.get("password")
+        
+        if len(cc_myself) < 4:
+            self._errors['collegename'] = self.error_class([
+                'Minimum 5 characters required'])
+              
+        def isEmailAddressValid( semail ):
+           
+           try:
+               EmailField().clean(semail)
+               return True
+                                                  
+           except ValidationError:
+               return False
+        if len(password)<8:
+            self._errors['password'] = self.error_class([
+                'Minimum 8 characters required'])
+      
