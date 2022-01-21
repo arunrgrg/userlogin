@@ -40,13 +40,54 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mt-5 display-7 fw-bold mt-5 pt-5 mb-5">COLLEGE</h2>
+            <div class="mt-5 pt-5">
+                <table id="myTablee" class="display">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>college</th>
+                            <th>location</th>
+                            <th>email</th>
+                            <th>password</th>
+                            <th>mobile number</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for i in clg %}
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{ i.collegename }}</td>
+                            <td>{{ i.location }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.password }}</td>
+                            <td>{{ i.mobilenumber }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/deleteclgad/{{ i.id }}" role="button" onclick="return confirm(' Are you sure you want to delete this account?')"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
+    </div>
+</div>
 
 {% endblock %} {% block script %}
 
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
+    });
+    
+    $(document).ready(function() {
+        $('#myTablee').DataTable();
     });
 </script>
 

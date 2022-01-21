@@ -22,7 +22,7 @@ urlpatterns = [
 
    path('admin/',views.admin,name='admin'),
    path('deleteuserad/<int:userid>/',views.Deuser,name='deuser'),
-
+   path('deleteclgad/<int:clgid>/',views.Declg,name='deuser'),
 
    
 ]

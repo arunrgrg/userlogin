@@ -198,16 +198,26 @@ def cllogout(request):
 # ADMIN
 
 def admin(request):
+    
     user=reg.objects.all()
+    clg=college_reg.objects.all()
 
+    return render(request,'admin.html',{'seeker':user,'clg':clg})
 
-    return render(request,'admin.html',{'seeker':user})
 
 def Deuser(request,**kwargs):
    
     id=kwargs.get('userid') 
     user=reg.objects.get(id=id)
     user.delete()
+
+    return redirect('/admin/')
+
+def Declg(request,**kwargs):
+
+    id=kwargs.get('clgid') 
+    clg=college_reg.objects.get(id=id)
+    clg.delete()
 
     return redirect('/admin/')
 
